@@ -6,6 +6,10 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.API", "src\Movies.API\Movies.API.csproj", "{913C42F6-33D0-43A1-9FE8-9555EAF0A75A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7DFDA18D-6F08-4F05-AC40-6AD1AAFC1395}"
+	ProjectSection(SolutionItems) = preProject
+		src\Movies.API\Dockerfile = src\Movies.API\Dockerfile
+		src\Movies.API\Dockerfile.original = src\Movies.API\Dockerfile.original
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{16F011BB-494B-46C4-A252-3DF1123F2737}"
 EndProject

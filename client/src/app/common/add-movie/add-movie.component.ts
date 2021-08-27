@@ -39,7 +39,7 @@ export class AddMovieComponent implements OnInit {
       title: new FormControl(null, [Validators.required]),
       language: new FormControl(null, [Validators.required]),
       location: new FormControl(null, [Validators.required]),
-      rating: new FormControl(null, [Validators.required, Validators.max(5)]),
+      rating: new FormControl(null, [Validators.required, Validators.max(10)]),
       plot: new FormControl(null, [Validators.required]),
       poster: new FormControl(null, [Validators.required]),
       listingType: new FormControl(null, [Validators.required]),

@@ -6,23 +6,24 @@ import { Movie } from '../models/movie';
 
 @Injectable()
 export class MovieService {
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
+  baseUrl = 'http://localhost:3000/api/Movies';
   getAllMovies(): Observable<Movie[]> {
     return this.http
-      .get('https://localhost:5001/api/Movies/allMovies')
+      .get(this.baseUrl + '/allMovies')
       .pipe(map((data: any) => data));
   }
 
   getMovieById(imdbId: string): Observable<Movie> {
     return this.http
-      .get('https://localhost:5001/api/Movies/movie?imdbID=' + imdbId)
+      .get(this.baseUrl + '/movie?imdbID=' + imdbId)
       .pipe(map((data: any) => data));
   }
 
-  addMovie(movieForm:any):Observable<void>{
-    return this.http.post("https://localhost:5001/api/Movies",movieForm)
-    .pipe(map((data: any) => data));
+  addMovie(movieForm: any): Observable<void> {
+    return this.http
+      .post(this.baseUrl, movieForm)
+      .pipe(map((data: any) => data));
   }
 }
