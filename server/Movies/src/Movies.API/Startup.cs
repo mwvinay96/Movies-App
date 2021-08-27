@@ -14,11 +14,15 @@ using System.Text.RegularExpressions;
 using System.Reflection;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
+using Movies.Application;
+using Movies.Application.Services;
 
 namespace Movies.API
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -30,9 +34,18 @@ namespace Movies.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                                  });
+            });
 
             //Since reading from json, keeping it singleton for performance reasons.
             services.AddDbContext<IMoviesContext, MoviesContext>(options => options.UseInMemoryDatabase("movies"));
+            services.AddScoped<IMovieService, MovieService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Movies.API", Version = "v1" });
@@ -59,6 +72,7 @@ namespace Movies.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(MyAllowSpecificOrigins);
 
 
             app.UseAuthorization();

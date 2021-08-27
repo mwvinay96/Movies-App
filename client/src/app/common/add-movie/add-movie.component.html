@@ -1,0 +1,207 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar></div>
+      <mat-card-title>Movie Form</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="formGroup" novalidate (ngSubmit)="onSubmit()">
+      <p>
+        <mat-form-field class="full-width" appearance="outline">
+          <input
+            matInput
+            maxlength="25"
+            placeholder="Title"
+            formControlName="title"
+            required
+          />
+          <mat-error
+            *ngFor="let validation of movieForm_Validation_Messages.title"
+          >
+            <mat-error
+              class="error-message"
+              *ngIf="
+                formGroup.get('title')?.hasError(validation.type) &&
+                (formGroup.get('title')?.dirty ||
+                  formGroup.get('title')?.touched)
+              "
+              >{{ validation.message }}</mat-error
+            >
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field class="full-width" appearance="outline">
+          <input
+            matInput
+            maxlength="25"
+            placeholder="Language"
+            formControlName="language"
+            required
+          />
+          <mat-error
+            *ngFor="let validation of movieForm_Validation_Messages.language"
+          >
+            <mat-error
+              class="error-message"
+              *ngIf="
+                formGroup.get('language')?.hasError(validation.type) &&
+                (formGroup.get('language')?.dirty ||
+                  formGroup.get('language')?.touched)
+              "
+              >{{ validation.message }}</mat-error
+            >
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field class="full-width" appearance="outline">
+          <input
+            matInput
+            maxlength="25"
+            placeholder="Location"
+            formControlName="location"
+            required
+          />
+          <mat-error
+            *ngFor="let validation of movieForm_Validation_Messages.location"
+          >
+            <mat-error
+              class="error-message"
+              *ngIf="
+                formGroup.get('location')?.hasError(validation.type) &&
+                (formGroup.get('location')?.dirty ||
+                  formGroup.get('location')?.touched)
+              "
+              >{{ validation.message }}</mat-error
+            >
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field class="full-width" appearance="outline">
+          <textarea
+            matInput
+            placeholder="Plot"
+            formControlName="plot"
+            required
+            matLine
+          >
+          </textarea>
+          <mat-error
+            *ngFor="let validation of movieForm_Validation_Messages.plot"
+          >
+            <mat-error
+              class="error-message"
+              *ngIf="
+                formGroup.get('plot')?.hasError(validation.type) &&
+                (formGroup.get('plot')?.dirty || formGroup.get('plot')?.touched)
+              "
+              >{{ validation.message }}</mat-error
+            >
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field class="full-width" appearance="outline">
+          <input
+            matInput
+            placeholder="Poster URL"
+            formControlName="poster"
+            required
+          />
+          <mat-error
+            *ngFor="let validation of movieForm_Validation_Messages.poster"
+          >
+            <mat-error
+              class="error-message"
+              *ngIf="
+                formGroup.get('poster')?.hasError(validation.type) &&
+                (formGroup.get('poster')?.dirty ||
+                  formGroup.get('poster')?.touched)
+              "
+              >{{ validation.message }}</mat-error
+            >
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+
+      <p>
+        <mat-form-field class="full-width" appearance="outline">
+          <input
+            matInput
+            maxlength="25"
+            placeholder="IMDB Id"
+            formControlName="imdbId"
+            required
+          />
+          <mat-error
+            *ngFor="let validation of movieForm_Validation_Messages.imdbId"
+          >
+            <mat-error
+              class="error-message"
+              *ngIf="
+                formGroup.get('imdbId')?.hasError(validation.type) &&
+                (formGroup.get('imdbId')?.dirty ||
+                  formGroup.get('imdbId')?.touched)
+              "
+              >{{ validation.message }}</mat-error
+            >
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Listing Type</mat-label>
+          <mat-select formControlName="listingType" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let ls of listingTypes" [value]="ls.key">
+              {{ ls.value }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngFor="let validation of movieForm_Validation_Messages.ls"
+          >
+            <mat-error
+              class="error-message"
+              *ngIf="
+                formGroup.get('listingType')?.hasError(validation.type) &&
+                (formGroup.get('listingType')?.dirty ||
+                  formGroup.get('listingType')?.touched)
+              "
+              >{{ validation.message }}</mat-error
+            >
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <mat-slider
+        class="example-margin"
+        [max]="10"
+        [min]="1"
+        [step]="0.5"
+        [thumbLabel]="true"
+        aria-labelledby="example-name-label"
+        formControlName="rating"
+        
+      >
+      </mat-slider>
+
+      <p>
+        <button
+          class="submit-btn"
+          color="primary"
+          mat-raised-button
+          type="submit"
+          [disabled]="!formGroup.valid"
+        >
+          Submit
+        </button>
+      </p>
+    </form>
+  </mat-card>
+</div>

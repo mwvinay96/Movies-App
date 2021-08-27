@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Movies.Domain.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Movies.Domain
@@ -7,7 +8,7 @@ namespace Movies.Domain
     {
         private Movie() { }
         public Movie(string language,string location,string plot,string poster,List<string> soundEffects,List<string> stills,string title,
-                            string imdbId,string listingType,string imdbRating)
+                            string imdbId, ListingType listingType,string imdbRating)
         {
             Language = language;
             Location = location;    
@@ -28,7 +29,7 @@ namespace Movies.Domain
         public List<string> Stills { get; set; }
         public string Title { get; set; }
         public string ImdbID { get; set; }
-        public string ListingType { get; set; }
+        public ListingType ListingType { get; set; }
         public string ImdbRating { get; set; }
     }
 

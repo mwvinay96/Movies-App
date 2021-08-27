@@ -25,9 +25,19 @@ namespace Movies.Infrastructure.Data
             return await Movies.AsNoTracking().ToListAsync();
         }
 
+        public async Task<Movie> GetMovieById(string imdbId)
+        {
+            return await Movies.AsNoTracking().FirstOrDefaultAsync(e => e.ImdbID == imdbId);
+        }
         void IMoviesContext.SaveChanges()
         {
             this.SaveChanges();
+        }
+
+        public async Task Addmovie(Movie movie)
+        {
+            this.Movies.Add(movie);
+            await this.SaveChangesAsync();
         }
     }
 }
