@@ -67,4 +67,8 @@ export class AddMovieComponent implements OnInit {
     ls: [{ type: 'required', message: 'ListingType is required' }],
     imdbId: [{ type: 'required', message: 'IMDB Id is required' }],
   };
+
+  onBack() {
+    this.router.navigate(['/home']);
+  }
 }
