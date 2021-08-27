@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Domain", "src\Movies
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Infrastructure", "src\Movies.Infrastructure\Movies.Infrastructure.csproj", "{F7B7C0EB-ED5C-48FE-AD4B-3CE616F86920}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Application", "src\Movies.Application\Movies.Application.csproj", "{995E8E61-F907-4D33-A6C4-F490A419C974}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Application", "src\Movies.Application\Movies.Application.csproj", "{995E8E61-F907-4D33-A6C4-F490A419C974}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
